@@ -504,14 +504,17 @@ img {
   background-color: var(--first-color);
 }
 
-.skills__html{
+.skills__aws{
   width: 90%;
 }
 
-.skills__css{
-  width: 80%;
+.skills__azure{
+  width: 30%;
 }
 
+.skills__jenkins{
+  width: 80%;
+}
 .skills__js{
   width: 60%;
 }
@@ -541,11 +544,11 @@ img {
 }
 
 .skills__sketch{
- width: 0%;
+ width: 50%;
 }
 
 .skills__photoshop{
- width: 0%;
+ width: 50%;
 }
 
 .skills__close .skills__list{
