@@ -515,12 +515,17 @@ img {
 .skills__jenkins{
   width: 80%;
 }
+
+.skills__css{
+  width: 80%;
+}
+
 .skills__js{
   width: 60%;
 }
 
 .skills__react{
-  width: 85%;
+  width: 50%;
 }
 
 .skills__php{
