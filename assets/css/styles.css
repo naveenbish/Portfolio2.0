@@ -798,34 +798,28 @@ img {
   outline: none;
 }
 
+/*=================== Project Section Frontend and FullStack =======================*/
 
-/*==================== PROJECT IN MIND ====================*/
-.project{
-  text-align: center;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
 
-.project__bg{
-  background-color: var(--first-color-second);
-  padding-top: 3rem;
+.grid-item {
+  min-height: 150px;
+  min-width: 200px;
+  object-fit: cover;
+  border: 1px solid var(--first-color);
 }
 
-.project__title{
-  font-size: var(--h2-font-size);
-  margin-bottom: var(--mb-0-75);
+.grid-item img{
+  height: 100%;
+  width: 100%;
 }
 
-.project__description{
-  margin-bottom: var(--mb-1-5);
-}
-
-.project__title,
-.project__description{
-  color: #FFF;
-}
-
-.project__img{
-  width: 232px;
-  justify-self: center;
+.project__container{
+  grid-template-columns: repeat(1, 1fr);
 }
 
 /*==================== TESTIMONIAL ====================*/
@@ -1012,6 +1006,7 @@ img {
 ::-webkit-scrollbar-thumb:hover{
   background-color: var(--text-color-light);
 }
+
 /*==================== MEDIA QUERIES ====================*/
 /* For small devices */
 @media screen and (max-width: 350px) {
@@ -1088,7 +1083,6 @@ img {
   .about__container,
   .skills__container,
   .portfolio__content,
-  .project__container,
   .contact__container,
   .footer__container{
     grid-template-columns: repeat(2, 1fr);
@@ -1098,6 +1092,9 @@ img {
     display: grid;
     grid-template-columns: .6fr;
     justify-content: center;
+  }
+  .project__container{
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1219,13 +1216,6 @@ img {
   .project__bg{
     background: none;
   }
-  .project__container{
-    background-color: var(--first-color-second);
-    border-radius: 1rem;
-    padding: 3rem 2.5rem 0;
-    grid-template-columns: 1fr max-content;
-    column-gap: 3rem;
-  }
   .project__data{
     padding-top: .8rem;
   }
@@ -1245,6 +1235,9 @@ img {
   }
   .footer__copy{
     margin-top: 4.5rem;
+  }
+  .project__container{
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1288,5 +1281,8 @@ img {
   }
   .contact__inputs{
     grid-template-columns: repeat(2, 1fr);
+  }
+  .project__container{
+    grid-template-columns: repeat(3, 1fr);
   }
 }
