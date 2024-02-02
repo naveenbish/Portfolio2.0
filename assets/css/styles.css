@@ -590,12 +590,17 @@ img {
 }
 
 .eduWtext{
-  color: white;
+  color: var(--first-color);
+  font-weight: bolder;
+  border-bottom: 2px solid var(--first-color);
 }
 
-.eduBtext{
-  color: black;
-}
+/* .hreduWtext{
+  transition: all 1s;
+  border-bottom: 2px solid var(--first-color);
+  width: 100%;
+  padding-right: 80px;
+} */
 
 .qualification__data{
   display: grid;
