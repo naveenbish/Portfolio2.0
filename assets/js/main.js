@@ -52,7 +52,7 @@ skillsHeader.forEach((el) => {
 const tabs = document.querySelectorAll("[data-target]"),
   tabContents = document.querySelectorAll("[data-content]"),
   tabColor = document.querySelectorAll(".educoltxt");
-tabColor.forEach((tabCol, target231) => {
+tabColor.forEach(async(tabCol, target231) => {
   const dataColor = tabCol.getAttribute('data-color');
   tabCol.addEventListener("click", () => {
     if(dataColor == '#educoltxt'){
