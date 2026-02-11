@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naveen Bisht — NeuralEDGE Consultant</title>
+  <meta name="description" content="Digital business card for Naveen Bisht, NeuralEDGE Consultant">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f4;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      min-height: 100vh;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #0d9488, #134e4a);
+      padding: 48px 24px 64px;
+      text-align: center;
+      position: relative;
+    }
+
+    .profile-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+
+    .header h1 {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: -28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .quick-action {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .quick-action:active {
+      transform: scale(0.95);
+    }
+
+    .quick-action svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Contact Details */
+    .contact-section {
+      padding: 36px 20px 24px;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+      overflow: hidden;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+      border-bottom: 1px solid #f1f5f5;
+    }
+
+    .contact-row:last-child {
+      border-bottom: none;
+    }
+
+    .contact-row:active {
+      background: #f0fdf9;
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .contact-icon.phone {
+      background: #ecfdf5;
+    }
+
+    .contact-icon.phone svg {
+      color: #0d9488;
+    }
+
+    .contact-icon.email {
+      background: #ecfdf5;
+    }
+
+    .contact-icon.email svg {
+      color: #0d9488;
+    }
+
+    .contact-icon.website {
+      background: #ecfdf5;
+    }
+
+    .contact-icon.website svg {
+      color: #0d9488;
+    }
+
+    .contact-icon.company {
+      background: #ecfdf5;
+    }
+
+    .contact-icon.company svg {
+      color: #0d9488;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      color: #1e293b;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .contact-row-arrow {
+      color: #cbd5e1;
+      flex-shrink: 0;
+    }
+
+    .contact-row-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Add Contact Button */
+    .add-contact-wrap {
+      padding: 8px 20px 40px;
+    }
+
+    .add-contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #0d9488, #134e4a);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 14px rgba(13, 148, 136, 0.35);
+    }
+
+    .add-contact-btn:active {
+      transform: scale(0.98);
+    }
+
+    .add-contact-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Desktop centering */
+    @media (min-width: 481px) {
+      body {
+        padding: 24px;
+        align-items: center;
+      }
+
+      .card {
+        min-height: auto;
+        border-radius: 24px;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Header -->
+    <div class="header">
+      <img
+        src="../assets/img/naveen_image.jpeg"
+        alt="Naveen Bisht"
+        class="profile-photo"
+      >
+      <h1>Naveen Bisht</h1>
+      <p>NeuralEDGE Consultant</p>
+    </div>
+
+    <!-- Quick Action Buttons -->
+    <div class="quick-actions">
+      <a href="tel:+919599508607" class="quick-action" aria-label="Call Naveen">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      </a>
+      <a href="mailto:naveen@synlex.tech" class="quick-action" aria-label="Email Naveen">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="contact-section">
+      <div class="contact-card">
+        <!-- Phone -->
+        <a href="tel:+919599508607" class="contact-row">
+          <div class="contact-icon phone">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+91 95995 08607</div>
+          </div>
+          <div class="contact-row-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:naveen@synlex.tech" class="contact-row">
+          <div class="contact-icon email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Company Email</div>
+            <div class="contact-value">naveen@synlex.tech</div>
+          </div>
+          <div class="contact-row-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Website -->
+        <a href="https://neuraledge.in" target="_blank" rel="noopener noreferrer" class="contact-row">
+          <div class="contact-icon website">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Company Website</div>
+            <div class="contact-value">neuraledge.in</div>
+          </div>
+          <div class="contact-row-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Company -->
+        <div class="contact-row" style="cursor: default;">
+          <div class="contact-icon company">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+              <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+              <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+              <path d="M10 6h4"/>
+              <path d="M10 10h4"/>
+              <path d="M10 14h4"/>
+              <path d="M10 18h4"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <div class="contact-label">Company</div>
+            <div class="contact-value">NeuralEDGE &mdash; NeuralEDGE Consultant</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Contact Button -->
+    <div class="add-contact-wrap">
+      <button class="add-contact-btn" onclick="downloadVCard()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <line x1="19" y1="8" x2="19" y2="14"/>
+          <line x1="22" y1="11" x2="16" y2="11"/>
+        </svg>
+        Add Contact
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function downloadVCard() {
+      const vcard = [
+        'BEGIN:VCARD',
+        'VERSION:3.0',
+        'FN:Naveen Bisht',
+        'N:Bisht;Naveen;;;',
+        'TEL;TYPE=CELL:+919599508607',
+        'EMAIL;TYPE=WORK:naveen@synlex.tech',
+        'ORG:NeuralEDGE',
+        'TITLE:NeuralEDGE Consultant',
+        'URL:https://neuraledge.in',
+        'END:VCARD'
+      ].join('\r\n');
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Naveen_Bisht.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
