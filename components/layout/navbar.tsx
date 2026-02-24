@@ -132,31 +132,53 @@ export function Navbar() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="w-[280px] sm:w-[320px] p-0">
                 <SheetTitle className="sr-only">Navigation</SheetTitle>
-                <ScrollArea className="h-full pt-8">
-                  <nav className="flex flex-col gap-4 mt-4">
-                    {navLinks.map((link) => {
-                      const sectionId = link.href.replace("#", "")
-                      const isActive = activeSection === sectionId
-                      return (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          onClick={() => setOpen(false)}
-                          className={cn(
-                            "text-lg transition-colors",
-                            isActive
-                              ? "text-accent-brand font-medium"
-                              : "text-muted-foreground hover:text-foreground"
-                          )}
-                        >
-                          {link.label}
-                        </a>
-                      )
-                    })}
-                  </nav>
-                </ScrollArea>
+                <div className="flex flex-col h-full">
+                  {/* Brand header */}
+                  <div className="px-6 pt-6 pb-4 border-b border-border/50">
+                    <a
+                      href="#hero"
+                      onClick={() => setOpen(false)}
+                      className="text-lg font-bold tracking-tight text-gradient"
+                    >
+                      ErrorOp
+                    </a>
+                  </div>
+
+                  {/* Nav links */}
+                  <ScrollArea className="flex-1 px-3 py-4">
+                    <nav className="flex flex-col gap-1">
+                      {navLinks.map((link) => {
+                        const sectionId = link.href.replace("#", "")
+                        const isActive = activeSection === sectionId
+                        return (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setOpen(false)}
+                            className={cn(
+                              "flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200",
+                              isActive
+                                ? "bg-accent-brand/10 text-accent-brand"
+                                : "text-muted-foreground hover:bg-muted/50 hover:text-foreground active:bg-muted"
+                            )}
+                          >
+                            {isActive && (
+                              <span className="w-1 h-5 rounded-full bg-accent-brand shrink-0" />
+                            )}
+                            <span className={cn(!isActive && "ml-4")}>{link.label}</span>
+                          </a>
+                        )
+                      })}
+                    </nav>
+                  </ScrollArea>
+
+                  {/* Footer */}
+                  <div className="px-6 py-4 border-t border-border/50">
+                    <p className="text-xs text-muted-foreground">DevOps + Web Dev</p>
+                  </div>
+                </div>
               </SheetContent>
             </Sheet>
           </div>

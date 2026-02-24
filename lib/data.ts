@@ -253,7 +253,7 @@ export const portfolioData: PortfolioData = {
         value: "New Delhi, India",
       },
     ],
-    formAction: "https://formsubmit.co/bishtnitin003@gmail.com",
+    formAction: "/api/contact",
   },
 
   footer: {

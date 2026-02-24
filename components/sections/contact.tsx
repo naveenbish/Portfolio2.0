@@ -116,16 +116,34 @@ export function ContactSection({ contact }: ContactSectionProps) {
     setSending(true)
     const form = e.currentTarget
     const formData = new FormData(form)
+
     try {
-      const res = await fetch(contact.formAction, {
+      const res = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          subject: formData.get("_subject"),
+          message: formData.get("message"),
+        }),
       })
-      if (!res.ok) throw new Error("Request failed")
-      toast.success("Message sent successfully!")
-      form.reset()
+
+      const data = await res.json()
+
+      if (res.ok && data.success) {
+        toast.success("Message sent successfully!")
+        form.reset()
+      } else {
+        const errorMsg =
+          data.errors?.form ||
+          Object.values(data.errors || {}).join(". ") ||
+          data.message ||
+          "Something went wrong. Please try again."
+        toast.error(errorMsg as string)
+      }
     } catch {
-      toast.error("Failed to send message. Please try again.")
+      toast.error("Network error. Please check your connection and try again.")
     } finally {
       setSending(false)
     }
