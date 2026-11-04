@@ -34,8 +34,8 @@ export function ProjectItem({
       <div className="hover:bg-accent relative flex items-center transition-colors">
         <IconTile className="mx-4">{icon}</IconTile>
 
-        <div className="border-line flex flex-1 items-center gap-2 border-l border-dashed p-4">
-          <div className="flex-1">
+        <div className="border-line flex min-w-0 flex-1 items-center gap-2 border-l border-dashed p-4">
+          <div className="min-w-0 flex-1 [overflow-wrap:anywhere]">
             <h3 className="mb-1 leading-snug font-medium text-balance">
               <button
                 type="button"

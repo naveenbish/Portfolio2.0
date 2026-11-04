@@ -38,11 +38,13 @@ export function SearchDialog({ entries }: { entries: Entry[] }) {
   function go(entry: Entry | undefined) {
     if (!entry) return;
     close();
-    window.location.hash = entry.href.replace(/^#/, "");
+    if (entry.href.startsWith("#")) window.location.hash = entry.href.slice(1);
+    else window.open(entry.href, "_blank", "noopener,noreferrer");
   }
 
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
+      if (!window.matchMedia("(min-width: 640px)").matches) return;
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
         const dialog = dialogRef.current;
@@ -60,7 +62,7 @@ export function SearchDialog({ entries }: { entries: Entry[] }) {
         type="button"
         onClick={open}
         aria-label="Search"
-        className="text-muted-foreground hover:bg-accent hover:text-foreground inline-flex h-8 items-center gap-2 rounded-lg px-2 text-sm transition-colors"
+        className="text-muted-foreground hover:bg-accent hover:text-foreground inline-flex h-11 sm:h-8 items-center gap-2 rounded-lg px-3 sm:px-2 text-sm transition-colors"
       >
         <Search className="size-4" />
         <span className="hidden items-center gap-1 sm:flex">
@@ -100,7 +102,7 @@ export function SearchDialog({ entries }: { entries: Entry[] }) {
             }}
             placeholder="Search sections…"
             aria-label="Search sections"
-            className="h-12 w-full bg-transparent text-sm outline-none"
+            className="h-12 min-w-0 w-full bg-transparent text-base sm:text-sm outline-none"
           />
         </div>
         <ul className="max-h-72 overflow-y-auto p-1.5">

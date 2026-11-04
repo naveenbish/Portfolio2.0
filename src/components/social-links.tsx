@@ -33,7 +33,7 @@ export function SocialLinks() {
             target="_blank"
             rel="noreferrer"
             aria-label={social.label}
-            className="bg-background hover:bg-accent inline-flex size-8 items-center justify-center rounded-lg border shadow-xs transition-colors"
+            className="bg-background hover:bg-accent inline-flex size-11 sm:size-8 items-center justify-center rounded-lg border shadow-xs transition-colors"
           >
             <SocialIcon id={social.id} />
           </a>

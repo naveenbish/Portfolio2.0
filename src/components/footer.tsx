@@ -29,7 +29,7 @@ const linkClass =
 export function Footer() {
   const f = site.footer;
   return (
-    <footer className="relative">
+    <footer className="relative overflow-x-clip">
       <Column>
         <div className="screen-line-bottom flex flex-wrap items-baseline justify-between gap-2 px-4 py-3">
           <p className="font-mono text-sm font-medium">{site.brand}</p>
@@ -74,7 +74,7 @@ export function Footer() {
           .
         </div>
 
-        <div className="screen-line-bottom flex items-center justify-between px-4 py-3">
+        <div className="screen-line-bottom flex flex-col items-start justify-between gap-3 px-4 py-3 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
             <LogoMark pixel={2} className="text-foreground" />
             <p className="text-muted-foreground text-xs">
@@ -99,22 +99,11 @@ export function Footer() {
         </div>
       </Column>
 
-      <div className="screen-line-bottom after:z-1 after:bg-foreground/15 mt-10">
-        <div className="overflow-hidden">
-          <div className="flex w-full translate-y-[37.5%] items-center justify-center">
-            <NameArt text={site.name} className="container size-full" />
-          </div>
+      <div className="screen-line-bottom after:bg-foreground/15">
+        <div className="mx-auto w-full max-w-5xl px-4 py-5 sm:px-6 sm:py-8">
+          <NameArt text={site.name} className="block h-auto w-full" />
         </div>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute bottom-0 left-1/2 hidden h-px w-1/2 max-w-full -translate-x-1/2 dark:block"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0) 0%, rgba(228,228,231,0.3) 50%, rgba(0,0,0,0) 100%)",
-          }}
-        />
       </div>
-      <div className="h-24" />
     </footer>
   );
 }
