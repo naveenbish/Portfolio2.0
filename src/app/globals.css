@@ -104,6 +104,7 @@
   }
 
   html {
+    overflow-x: clip;
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-height) + 1rem);
   }
@@ -126,6 +127,12 @@
     html {
       scroll-behavior: auto;
     }
+  }
+}
+
+@media (width < 40rem) {
+  :root {
+    --header-height: 56px;
   }
 }
 
@@ -175,4 +182,52 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* Keep the mobile dock and its menu above the phone's home indicator. */
+.mobile-dock {
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+}
+
+.mobile-menu {
+  bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  max-height: calc(100dvh - 7rem - env(safe-area-inset-bottom));
+}
+
+.mobile-menu-results {
+  max-height: min(22rem, calc(100dvh - 18rem - env(safe-area-inset-bottom)));
+}
+
+.mobile-menu[open] {
+  animation: mobile-menu-in 180ms ease-out;
+}
+
+@keyframes mobile-menu-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (width < 40rem) {
+  body {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu[open] { animation: none; }
+}
+
+/* Reveal the new palette above a still snapshot of the previous theme. */
+html[data-theme-transition]::view-transition-old(root),
+html[data-theme-transition]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html[data-theme-transition]::view-transition-old(root) {
+  z-index: 1;
+}
+
+html[data-theme-transition]::view-transition-new(root) {
+  z-index: 2;
 }

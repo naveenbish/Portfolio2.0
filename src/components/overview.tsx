@@ -13,19 +13,19 @@ function OverviewRow({ icon, text, at, href }: Row) {
     </>
   );
   return (
-    <li className="flex min-h-[2.125rem] items-center gap-3 px-4 py-0.5 font-mono text-sm">
+    <li className="flex min-h-[2.125rem] items-center gap-3 px-4 py-1.5 sm:py-0.5 font-mono text-sm">
       <IconChip>
         <NamedIcon name={icon} />
       </IconChip>
       {href ? (
         <a
           href={href}
-          className="decoration-muted-foreground/40 break-words underline-offset-4 hover:underline sm:truncate"
+          className="decoration-muted-foreground/40 min-w-0 [overflow-wrap:anywhere] underline-offset-4 hover:underline sm:truncate"
         >
           {body}
         </a>
       ) : (
-        <span className="break-words sm:truncate">{body}</span>
+        <span className="min-w-0 [overflow-wrap:anywhere] sm:truncate">{body}</span>
       )}
     </li>
   );
@@ -40,7 +40,7 @@ export function Overview() {
         Overview
       </h2>
       <div className="mx-auto max-w-3xl border-x">
-        <ul className="relative grid py-3 sm:grid-cols-[3fr_2fr] sm:before:absolute sm:before:inset-y-0 sm:before:left-[60%] sm:before:border-l sm:before:border-dashed">
+        <ul className="relative grid py-3 sm:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] sm:before:absolute sm:before:inset-y-0 sm:before:left-[60%] sm:before:border-l sm:before:border-dashed">
           <OverviewRow {...job} />
           <li aria-hidden className="hidden sm:block" />
           <OverviewRow {...location} />

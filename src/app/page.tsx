@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="overflow-x-clip">
         <Hero />
         <Separator />
         <SocialLinks />
@@ -39,11 +39,6 @@ export default function Home() {
       </main>
       <Footer />
 
-      {/* soft fade so content dissolves at the bottom of the viewport */}
-      <div
-        aria-hidden
-        className="from-background pointer-events-none fixed inset-x-0 bottom-0 z-40 h-24 bg-gradient-to-t to-transparent"
-      />
       <ScrollTop />
     </>
   );

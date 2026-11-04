@@ -4,8 +4,8 @@
  * 8-row capitals and ascenders. Each glyph is split into rectangles whose
  * outlines are stroked, so the seams between strokes show like in the original.
  *
- * The footer clips the lower part of the artwork, so only the tops of the
- * letters rise out of the bottom line. Pure geometry — deterministic at build.
+ * The full name scales with its viewBox on every screen.
+ * Pure geometry — deterministic at build.
  */
 
 const CELL = 32;
@@ -77,12 +77,13 @@ export function NameArt({ text, className }: { text: string; className?: string 
 
   return (
     <svg
-      aria-hidden
+      role="img"
+      aria-label={text}
       viewBox={`0 0 ${cells * CELL + 2} ${ROWS * CELL + 2}`}
       fill="none"
       className={className}
     >
-      <path d={d} strokeWidth={2} strokeLinejoin="miter" className="stroke-foreground/10" />
+      <path d={d} strokeWidth={1} vectorEffect="non-scaling-stroke" strokeLinejoin="miter" className="fill-foreground/3 stroke-foreground/40" />
     </svg>
   );
 }

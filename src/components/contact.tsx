@@ -47,7 +47,7 @@ export function Contact() {
       <div className="flex flex-wrap justify-center gap-2 px-4 py-4">
         <a
           href={`mailto:${contact.email}`}
-          className="bg-primary text-primary-foreground inline-flex h-8 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition-opacity hover:opacity-90"
+          className="bg-primary text-primary-foreground inline-flex h-11 sm:h-8 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition-opacity hover:opacity-90"
         >
           <Mail className="size-4" />
           Send message
@@ -56,7 +56,7 @@ export function Contact() {
           href={site.resumeUrl}
           target="_blank"
           rel="noreferrer"
-          className="hover:bg-accent bg-background inline-flex h-8 items-center gap-1.5 rounded-lg border px-3 text-sm font-medium transition-colors"
+          className="hover:bg-accent bg-background inline-flex h-11 sm:h-8 items-center gap-1.5 rounded-lg border px-3 text-sm font-medium transition-colors"
         >
           <Download className="size-4" />
           Download CV

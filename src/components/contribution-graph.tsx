@@ -50,31 +50,36 @@ export function ContributionGraph() {
         GitHub contributions
       </h2>
       <figure className="mx-auto max-w-3xl border-x">
-        <div className="overflow-hidden px-4 pt-4 pb-3">
-          <div aria-hidden className="text-muted-foreground relative mb-2 h-4 text-xs">
-            {monthLabels().map(({ week, label }) => (
-              <span
-                key={week}
-                className="absolute top-0 whitespace-nowrap"
-                style={{ left: `${(week / weeks) * 100}%` }}
+        <div className="px-4 pt-4 pb-3">
+          <p id="contribution-scroll-hint" className="text-muted-foreground mb-3 text-xs sm:hidden">Swipe to explore the year →</p>
+          <div role="region" aria-label="Contribution calendar" aria-describedby="contribution-scroll-hint" tabIndex={0} className="overflow-x-auto rounded-sm pb-2 focus-visible:outline-2 focus-visible:outline-offset-4">
+            <div className="min-w-[36rem]">
+              <div aria-hidden className="text-muted-foreground relative mb-2 h-4 text-xs">
+                {monthLabels().map(({ week, label }) => (
+                  <span
+                    key={week}
+                    className="absolute top-0 whitespace-nowrap"
+                    style={{ left: `${(week / weeks) * 100}%` }}
+                  >
+                    {label}
+                  </span>
+                ))}
+              </div>
+              <div
+                role="img"
+                aria-label={`${data.total} ${plural} on GitHub in the last year`}
+                className="grid grid-flow-col grid-rows-7 gap-[3px]"
+                style={{ gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))` }}
               >
-                {label}
-              </span>
-            ))}
-          </div>
-          <div
-            role="img"
-            aria-label={`${data.total} ${plural} on GitHub in the last year`}
-            className="grid grid-flow-col grid-rows-7 gap-[3px]"
-            style={{ gridTemplateColumns: `repeat(${weeks}, minmax(0, 1fr))` }}
-          >
-            {data.days.map((day) => (
-              <span
-                key={day.d}
-                title={`${day.c} contribution${day.c === 1 ? "" : "s"} on ${dateFmt.format(at(day.d))}`}
-                className={cn("aspect-square rounded-[2px] ring-1 ring-black/5 ring-inset dark:ring-white/5", LEVEL_CLASS[day.l])}
-              />
-            ))}
+                {data.days.map((day) => (
+                  <span
+                    key={day.d}
+                    title={`${day.c} contribution${day.c === 1 ? "" : "s"} on ${dateFmt.format(at(day.d))}`}
+                    className={cn("aspect-square rounded-[2px] ring-1 ring-black/5 ring-inset dark:ring-white/5", LEVEL_CLASS[day.l])}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
